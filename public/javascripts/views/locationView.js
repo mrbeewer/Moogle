@@ -11,7 +11,8 @@ app.ModelView = Backbone.View.extend({
     console.log("Rendering ModelView");
     var data = this.model.attributes;
     console.log("Grabbing template");
-    var template = document.getElementById('location-template').innerHTML;
+    // var template = document.getElementById('location-template').innerHTML;
+    var template = $('#location-template').html();
     console.log("Transforming template");
     var compiledTemplate = _.template(template);
     console.log("Creating HTML from template and model data...");

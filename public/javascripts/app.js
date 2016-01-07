@@ -3,6 +3,9 @@ var active = active || {};
 
 $(document).ready(function() {
   console.log("Something");
-  active.loginView = new app.loginView();
-  // active.collection = new app.Collection();
+
+  active.userCollection = new app.userCollection();
+  active.loginView = new app.loginView({
+    collection: active.userCollection
+  });
 });

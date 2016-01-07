@@ -5,4 +5,4 @@ app.userModel = Backbone.Model.extend({
 
 });
 
-Backbone.Model.idAttributes = "_id";
+Backbone.Model.idAttribute = "_id";

@@ -1,8 +1,8 @@
-// var express = require('express');
+var express = require('express');
 // // var passport = require('passport');
 // // var LocalStrategy = require('passport-local').Strategy;
-// var User = require('../models/User');
-// var router = express.Router();
+var model = require('../models/User');
+var router = express.Router();
 
 // configure passport
 // passport.use(new LocalStrategy(User.authenticate()));
@@ -10,13 +10,27 @@
 // passport.deserializeUser(User.deserializeUser());
 // end configuration for passport
 
+function buildErrorResponse(err) {
+  return {
+    message: err,
+    status: 500,
+    note: 'This response was generated due to a user error'
+  };
+};
 
 router.get('/', function(req, res){
-  res.render('login', { user: req.user });
+  // res.render('login', { user: req.user });
+    model.find(function(err, users) {
+      if (err) {
+        res.json(buildErrorResponse(err));
+      } else {
+        res.json(users);
+      }
+    });
 });
 
 router.post('/', function(req, res) {
-
+  res.render('register', { user: req.user });
 });
 // router.get('/login', function(req, res){
 //   res.render('login', { user: req.user });

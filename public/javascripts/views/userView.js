@@ -16,8 +16,8 @@ var active = active || {};
 app.loginView = Backbone.View.extend({
   el: $('#login-content'),
   initialize: function() {
-    active.userCollection = new app.userCollection();
-    active.userCollection.fetch();
+    // active.userCollection = new app.userCollection();
+    // active.userCollection.fetch();
     console.log(active.userCollection);
     console.log("SearchList instaniated");
     this.render();
@@ -36,10 +36,16 @@ app.loginView = Backbone.View.extend({
       username: document.getElementById('login-username').value,
       password: document.getElementById('login-password').value
     };
-    var name = active.userCollection.get("username");
+    console.log(data);
+    // active.userCollection.create(data);
+    // console.log(userCollection.find({ 'username':'david' }));
+    console.log(app.userCollection.collection);
+    console.log(app.userCollection());
+    var name = active.userCollection.models[0].attributes['username'];
+    console.log("name is");
     console.log(name);
     if (name == data.username) {
-      var pass = active.userCollection.get("password");
+      var pass = active.userCollection.models[0].attributes['password'];
       console.log(pass);
       if (pass == data.password) {
         console.log(name + "\n" + pass);
